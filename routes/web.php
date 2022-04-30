@@ -61,3 +61,24 @@ Route::get('/admin/index_slider/create', [AdminController::class, 'index_slider_
 Route::post('/admin/index_slider/update_create', [AdminController::class, 'index_slider_update_create'])->name('admin.index_slider.update_create');
 Route::get('/admin/index_slider/edit/{id}', [AdminController::class, 'index_slider_edit'])->name('admin.index_slider.edit');
 Route::post('/admin/index_slider/update/{id}', [AdminController::class, 'index_slider_update'])->name('admin.index_slider.update');
+
+
+
+// Storage Path
+Route::get('storage/{dir}/{dir2}/{file}', function ($dir, $dir2, $file) {
+    $path = storage_path('app' . DIRECTORY_SEPARATOR . $dir . DIRECTORY_SEPARATOR . $dir2 . DIRECTORY_SEPARATOR . $file);
+    if (file_exists($path)) {
+        return response()->file($path);
+    } else {
+        return response()->json(['error' => 'File not found'], 404);
+    }
+});
+
+Route::get('storage/{dir}/{file}', function ($dir, $file) {
+    $path = storage_path('app' . DIRECTORY_SEPARATOR . $dir . DIRECTORY_SEPARATOR . $file);
+    if (file_exists($path)) {
+        return response()->file($path);
+    } else {
+        return response()->json(['error' => 'File not found'], 404);
+    }
+});
