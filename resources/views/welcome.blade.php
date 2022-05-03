@@ -3,7 +3,28 @@ $admin = true;
 $index = true;
 @endphp
 @extends('layouts.app')
-
+<style>
+  iframe {
+    width: 100%;
+    height: 100%;
+}
+.ytp-pause-overlay.ytp-scroll-min {
+    display: none!important;
+}
+.ytp-expand-pause-overlay .ytp-pause-overlay {
+    background: rgba(23,23,23,.9);
+    padding: 12px 16px 16px;
+    right: 0;
+    display: none!important;
+}
+.ytp-expand-pause-overlay .ytp-pause-overlay-content {
+    display: none!important;
+}
+.ytp-watermark yt-uix-sessionlink
+{
+    display: none!important;
+}
+</style>
 @section('content')
   <section class="home">
     <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
@@ -17,8 +38,9 @@ $index = true;
           @foreach($sliders as $slider)
         <div class="carousel-item {{$loop->first ? 'active' : ''}}">
           <button onclick="enableMute()" type="button"><i id="volume" class="fal fa-volume-slash"></i></button>
-          <video    autoplay="true"
-    muted="muted" autoplay loop  id="myVideo" class="d-block w-100" data-yt2html5="{{$slider->video}}"> </video>
+          <!-- <video    autoplay="true"
+    muted="muted" autoplay loop  id="myVideo" class="d-block w-100" data-yt2html5="{{$slider->video}}"> </video> -->
+          {!! $slider->video !!}
 
           <div class="carousel-caption">
             <h5>

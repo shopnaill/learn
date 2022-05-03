@@ -35,7 +35,8 @@ $admin = true;
                         @if (isset($slider))    
                         <input type="hidden" name="id" value="{{$slider->id}}">
                         <div class="form-group">
-                             <video autoplay loop muted id="myVideo" class="d-block w-100" data-yt2html5="{{$slider->video}}"> </video>
+                             <!-- <video autoplay loop muted id="myVideo" class="d-block w-100" data-yt2html5="{{$slider->video}}"> </video> -->
+                             {!! $slider->video !!}
                         </div>
                         @endif
                     
