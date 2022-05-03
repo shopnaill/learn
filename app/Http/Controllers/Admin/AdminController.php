@@ -266,26 +266,26 @@ class AdminController extends Controller
             'title' => 'required',
          ]);
 
-        if ($request->hasFile('video')) {
-        $video = $request->file('video');
-        $video->store('index_slider');
-        $video_name = 'index_slider/' . $video->hashName();
-        }else
-        {
-            $video_name = null;
-        }
+        // if ($request->hasFile('video')) {
+        // $video = $request->file('video');
+        // $video->store('index_slider');
+        // $video_name = 'index_slider/' . $video->hashName();
+        // }else
+        // {
+        //     $video_name = null;
+        // }
 
         if ($request->id) {
             $slider = IndexSlider::find($request->id);
             $slider->title = $request->title;
             $slider->description = $request->description;
-            $slider->video =  $video_name ? $video_name : $slider->video;
+            $slider->video =  $request->video;
             $slider->save();
         } else {
             $slider = new IndexSlider();
             $slider->title = $request->title;
             $slider->description = $request->description;
-            $slider->video = $video_name;
+            $slider->video = $request->video;
             $slider->save();
         }
 

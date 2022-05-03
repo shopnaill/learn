@@ -36,9 +36,17 @@ $socials = App\Models\SocialLink::get();
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header">
-          <img src="assets/img/modal.svg" class="img-fluid">
+          <img src="{{asset('img/modal.svg')}}" class="img-fluid">
         </div>
         <div class="modal-body">
+           <div class="mb-3">
+                       <p>
+            لكل من يرغب في الإلتحاق بإحدى الدورات التقنية المتخصصة
+1- اختيار إحدى المسارات المتاحة في الموقع
+2- تعبئة البيانات المطلوبه
+3- يبدأ التسجيل بإذن الله في 1/6/2022
+</p>
+            </div>
           <div class="mb-3">
             <input type="text" class="form-control" id="" placeholder="الأسم">
           </div>
@@ -55,7 +63,7 @@ $socials = App\Models\SocialLink::get();
   </div>
 
    @if (!isset($admin))
-  @include('layouts.footer') 
+  @include('layouts.footer')
     @endif
 
   <a href="#" class="back-to-top" style="display: inline;"><i class="fal fa-long-arrow-up" aria-hidden="true"></i></a>

@@ -1,5 +1,4 @@
 @php
-$nav = true;
 $admin = true;
 @endphp
 @extends('layouts.app')
@@ -17,10 +16,8 @@ $admin = true;
           @foreach($sliders as $slider)
         <div class="carousel-item {{$loop->first ? 'active' : ''}}">
           <button onclick="enableMute()" type="button"><i id="volume" class="fal fa-volume-slash"></i></button>
-          <video autoplay loop muted id="myVideo" class="d-block w-100">
-            <source src="{{asset('storage/'.$slider->video)}}" type="video/mp4">
-             Your browser does not support HTML5 video.
-          </video>
+          <video autoplay loop muted id="myVideo" class="d-block w-100" data-yt2html5="{{$slider->video}}"> </video>
+            
           <div class="carousel-caption">
             <h5>
                 {{$slider->title}}
@@ -28,8 +25,7 @@ $admin = true;
             <p>
                 {{$slider->description}}
             </p>
-            <a class="primary-btn" href="{{route('home')}}">إنضم الآن</a>
-          </div>
+           </div>
         </div>
         @endforeach
    
@@ -51,6 +47,9 @@ $admin = true;
 @endsection
 
 @section('scripts')
+<script src="https://cdn.jsdelivr.net/gh/thelevicole/youtube-to-html5-loader@4.0.1/dist/YouTubeToHtml5.js"></script>
+<script>new YouTubeToHtml5();</script>
+
   <script>
     var vid = document.getElementById("myVideo");
     var btn = document.getElementById("volume")
