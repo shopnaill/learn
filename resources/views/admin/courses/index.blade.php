@@ -28,6 +28,7 @@ $admin = true;
 
                 <td>
                   <a href="{{route('admin.courses.edit',$course->id)}}" class="btn btn-info">تعديل</a>
+                  <a data-bs-toggle="modal" data-bs-target="#DeleteModal" data-id="{{$course->id}}" class="btn btn-danger btn-delete">حذف</a>
                 </td>
               </tr>
               @endforeach
@@ -37,5 +38,20 @@ $admin = true;
       </div>
  </div>
 
+ @include('admin.courses.delete')
 
+
+@endsection
+
+@section('scripts')
+<script>
+  $(document).ready(function(){
+    $('.btn-delete').click(function(){
+      var id = $(this).data('id');
+      var url = '{{route("admin.courses.delete", ":id")}}';
+      url = url.replace(':id', id);
+      $('#delete-form').attr('action', url);
+    });
+  });
+</script>
 @endsection

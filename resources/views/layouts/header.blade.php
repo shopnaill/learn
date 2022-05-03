@@ -1,4 +1,4 @@
-<header class="fixed-top d-flex align-items-center header-transparent" style="">
+<header class="fixed-top d-flex align-items-center header-transparent" {{ isset($index) ?  "style=background:#fff0;" :  null }}>
     <div id="header" class="container-fluid d-flex align-items-center justify-content-between p-1"><button type="button" class="mobile-nav-toggle d-lg-none"><i class="fal fa-bars" aria-hidden="true"></i></button>
       <div class="logo">
         <a href="/"><img src="{{asset('img/logo.png')}}" class="img-fluid"></a>

@@ -39,6 +39,7 @@ Route::get('/admin/students/create', [AdminController::class, 'students_create']
 Route::post('/admin/students/update_create', [AdminController::class, 'students_update_create'])->name('admin.students.update_create');
 Route::get('/admin/students/edit/{id}', [AdminController::class, 'students_edit'])->name('admin.students.edit');
 Route::post('/admin/students/update/{id}', [AdminController::class, 'students_update'])->name('admin.students.update');
+Route::get('/admin/students/delete/{id}', [AdminController::class, 'students_delete'])->name('admin.students.delete');
 
 // courses routes
 Route::get('/admin/courses', [AdminController::class, 'courses'])->name('admin.courses');
@@ -46,6 +47,7 @@ Route::get('/admin/courses/create', [AdminController::class, 'courses_create'])-
 Route::post('/admin/courses/update_create', [AdminController::class, 'courses_update_create'])->name('admin.courses.update_create');
 Route::get('/admin/courses/edit/{id}', [AdminController::class, 'courses_edit'])->name('admin.courses.edit');
 Route::post('/admin/courses/update/{id}', [AdminController::class, 'courses_update'])->name('admin.courses.update');
+Route::delete('/admin/courses/delete/{id}', [AdminController::class, 'courses_delete'])->name('admin.courses.delete');
 
 // social routes
 Route::get('/admin/social', [AdminController::class, 'social'])->name('admin.social');
@@ -61,7 +63,7 @@ Route::get('/admin/index_slider/create', [AdminController::class, 'index_slider_
 Route::post('/admin/index_slider/update_create', [AdminController::class, 'index_slider_update_create'])->name('admin.index_slider.update_create');
 Route::get('/admin/index_slider/edit/{id}', [AdminController::class, 'index_slider_edit'])->name('admin.index_slider.edit');
 Route::post('/admin/index_slider/update/{id}', [AdminController::class, 'index_slider_update'])->name('admin.index_slider.update');
-
+Route::delete('/admin/index_slider/delete/{id}', [AdminController::class, 'index_slider_delete'])->name('admin.index_slider.delete');
 
 
 // Storage Path

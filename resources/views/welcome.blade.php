@@ -1,5 +1,6 @@
 @php
 $admin = true;
+$index = true;
 @endphp
 @extends('layouts.app')
 
@@ -16,8 +17,9 @@ $admin = true;
           @foreach($sliders as $slider)
         <div class="carousel-item {{$loop->first ? 'active' : ''}}">
           <button onclick="enableMute()" type="button"><i id="volume" class="fal fa-volume-slash"></i></button>
-          <video autoplay loop muted id="myVideo" class="d-block w-100" data-yt2html5="{{$slider->video}}"> </video>
-            
+          <video    autoplay="true"
+    muted="muted" autoplay loop  id="myVideo" class="d-block w-100" data-yt2html5="{{$slider->video}}"> </video>
+
           <div class="carousel-caption">
             <h5>
                 {{$slider->title}}
@@ -28,7 +30,7 @@ $admin = true;
            </div>
         </div>
         @endforeach
-   
+
 
       </div>
 
@@ -48,11 +50,37 @@ $admin = true;
 
 @section('scripts')
 <script src="https://cdn.jsdelivr.net/gh/thelevicole/youtube-to-html5-loader@4.0.1/dist/YouTubeToHtml5.js"></script>
-<script>new YouTubeToHtml5();</script>
+<script>new YouTubeToHtml5(
+  {
+     loop: true,
+     controls: true,
+    width: '100%',
+    height: '100%',
+    start: 0,
+     end: 0,
+     withAudio: true,
+    onReady: function(player) {
+      console.log('Player is ready!');
+      player.play();     // start playing the video
+       vid.play();
+    },
+    onStateChange: function(player) {
+      console.log('Player state is: ' + player.getPlayerState());
+    }
+  }
+ );
+ </script>
 
   <script>
     var vid = document.getElementById("myVideo");
     var btn = document.getElementById("volume")
+
+       // if document ready
+        document.addEventListener("DOMContentLoaded", function() {
+         var vid = document.getElementById("myVideo");
+          vid.play();
+         });
+
     function enableMute() {
       if (vid.muted) {
         vid.muted = false;
@@ -66,6 +94,7 @@ $admin = true;
 
       }
     }
+
 
   </script>
 @endsection

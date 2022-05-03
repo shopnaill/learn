@@ -136,6 +136,12 @@ class AdminController extends Controller
         return view('admin.students.form', compact('student'));
     }
 
+    public function students_delete($id)
+    {
+        $student = Student::find($id);
+        $student->delete();
+        return redirect()->route('admin.students');
+    }
 
 
     // courses routes
@@ -203,6 +209,13 @@ class AdminController extends Controller
     {
         $course = Course::find($id);
         return view('admin.courses.form', compact('course'));
+    }
+
+    public function courses_delete($id)
+    {
+        $course = Course::find($id);
+        $course->delete();
+        return redirect()->route('admin.courses');
     }
 
 
@@ -297,6 +310,13 @@ class AdminController extends Controller
     {
         $slider = IndexSlider::find($id);
         return view('admin.index.form', compact('slider'));
+    }
+
+    public function index_slider_delete($id)
+    {
+        $slider = IndexSlider::find($id);
+        $slider->delete();
+        return redirect()->route('admin.index_slider');
     }
 
 
